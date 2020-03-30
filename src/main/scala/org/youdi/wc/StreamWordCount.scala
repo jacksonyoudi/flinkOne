@@ -19,7 +19,7 @@ object StreamWordCount {
 
     val wordCountStream: DataStream[(String, Int)] = textDataStream.flatMap(_.split(" "))
       .filter(_.nonEmpty).disableChaining()
-      .map((_, 1))
+      .map((_, 1)).startNewChain()
       .keyBy(0)
       .sum(1)
 
