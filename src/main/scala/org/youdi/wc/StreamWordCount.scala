@@ -12,11 +12,13 @@ object StreamWordCount {
 
 
     val env: StreamExecutionEnvironment = StreamExecutionEnvironment.getExecutionEnvironment
+
+    //    env.disableOperatorChaining()
     // 接收socket数据流
     val textDataStream: DataStream[String] = env.socketTextStream("localhost", 7777)
 
     val wordCountStream: DataStream[(String, Int)] = textDataStream.flatMap(_.split(" "))
-      .filter(_.nonEmpty)
+      .filter(_.nonEmpty).disableChaining()
       .map((_, 1))
       .keyBy(0)
       .sum(1)
