@@ -12,7 +12,7 @@ object FlinkStreamWordCount {
     import org.apache.flink.streaming.api.scala._
 
     // 读取数据，读取socket数据流
-    val stream: DataStream[String] = env.socketTextStream("127.0.0.1", 9999) // 等同spark中的 Dstream
+    val stream: DataStream[String] = env.socketTextStream("10.211.55.5", 9999) // 等同spark中的 Dstream
 
     // 转化
     val result: DataStream[(String, Int)] = stream.flatMap(_.split(" "))
