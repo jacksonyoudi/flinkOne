@@ -1,6 +1,5 @@
 package org.youdi.sink
 
-import java.sql
 import java.sql.{Connection, DriverManager, PreparedStatement}
 
 import org.apache.flink.configuration.Configuration
