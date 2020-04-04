@@ -13,7 +13,7 @@ import org.apache.flink.streaming.api.scala.StreamExecutionEnvironment
  * @param callTime
  * @param duration
  */
-case class StationLog(sid: String, callOut: String, callIn: String, callType: String, callTime: Long, duration: Long)
+case class StationLog(sid: String, var callOut: String, var callIn: String, callType: String, callTime: Long, duration: Long)
 
 object CollectionSource {
 
