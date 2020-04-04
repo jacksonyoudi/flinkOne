@@ -30,7 +30,7 @@ class MyCuseterSource extends SourceFunction[StationLog] {
     while (flag) {
       1.to(10).map(
         i => {
-          val log: StationLog = StationLog("001" + random.nextInt(10), "186" + random.nextInt(1999), "187", "success", System.currentTimeMillis(), random.nextInt(10))
+          val log: StationLog = StationLog("001" + random.nextInt(10), "186" + random.nextInt(5), "187" + random.nextInt(5), "success", System.currentTimeMillis(), random.nextInt(10))
           log
         }
       ).foreach(ctx.collect)
