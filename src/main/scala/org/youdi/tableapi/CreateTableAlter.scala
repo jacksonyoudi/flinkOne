@@ -35,8 +35,14 @@ object CreateTableAlter {
 
     // 查询过滤
     //    val result: Any = table.filter('callType == "success")
-    val result: Table = table.filter("duration>4")
-    val ds: DataStream[Row] = tableEnv.toAppendStream[Row](result)
+    //    val result: Table = table.filter("duration>4")
+
+    //    val ds: DataStream[Row] = tableEnv.toAppendStream[Row](result)
+    val result: Table = table.groupBy("sid").select("sid,count(sid) as cnt")
+    // 5> (true,0012,5)
+    //6> (true,0018,14)
+    //1> (true,0016,12)
+    val ds: DataStream[(Boolean, Row)] = tableEnv.toRetractStream[Row](result).filter(_._1 == true)
 
     ds.print()
 
