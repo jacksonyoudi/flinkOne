@@ -19,9 +19,11 @@ object CreateTableByStream {
     // 注册表
     tableEnv.registerDataStream("t_2", stream)
 
-    val table: Table = tableEnv.scan("t_2")
+    tableEnv.sqlQuery("select * from t_2").printSchema()
 
-    table.printSchema()
+    //    val table: Table = tableEnv.scan("t_2")
+    //
+    //    table.printSchema()
 
     streamEnv.execute()
   }
