@@ -35,7 +35,7 @@ class MyCuseterSource extends SourceFunction[StationLog] {
         }
       ).foreach(ctx.collect)
 
-      Thread.sleep(2000)
+      Thread.sleep(4000)
 
     }
   }
